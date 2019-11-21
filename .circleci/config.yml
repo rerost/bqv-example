@@ -11,7 +11,7 @@ jobs:
           name: "Setting env"
           command: |
             echo "export GOOGLE_APPLICATION_CREDENTIALS=/key.json" >> $BASH_ENV
-            echo $GCP_KEY > $GOOGLE_APPLICATION_CREDENTIALS
+            echo $GCP_KEY > /key.json
       - run:
           name: "Prepare bqv"
           command: |
