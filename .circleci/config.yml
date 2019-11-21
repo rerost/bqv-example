@@ -10,8 +10,8 @@ jobs:
       - run:
           name: "Setting env"
           command: |
-            echo "export GOOGLE_APPLICATION_CREDENTIALS=/key.json" >> $BASH_ENV
-            echo $GCP_KEY > /key.json
+            echo "export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/key.json" >> $BASH_ENV
+            echo $GCP_KEY > ${HOME}/key.json
       - run:
           name: "Prepare bqv"
           command: |
@@ -19,7 +19,7 @@ jobs:
       - run:
           name: "Apply"
           command: |
-            ls example | xargs -IX bqv view apply --dir=./example/X --projectid=$GCP_PROJECT_ID --debug
+            ls example | xargs -IX bqv view apply --dir=./example/X --projectid=${GCP_PROJECT_ID} --debug
 
 workflows:
   version: 2
