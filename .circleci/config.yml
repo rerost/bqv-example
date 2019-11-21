@@ -1,6 +1,6 @@
 version: 2
-apply:
-  build:
+jobs:
+  apply:
     docker:
       - image: circleci/golang:1.13
 
