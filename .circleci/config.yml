@@ -25,5 +25,5 @@ workflows:
   version: 2
   apply:
     jobs:
-      - apply
-        context: gcp
+      - apply:
+          context: gcp
