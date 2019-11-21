@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  apply:
+    docker:
+      - image: circleci/golang:1.13
+
+    working_directory: /go/src/github.com/rerost/bqv-example
+    steps:
+      - checkout
+      - run:
+          name: "Setting env"
+          command: |
+            echo "export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/key.json" >> $BASH_ENV
+            echo $GCP_KEY > ${HOME}/key.json
+      - run:
+          name: "Prepare bqv"
+          command: |
+            go get github.com/rerost/bqv
+      - run:
+          name: "Apply"
+          command: |
+            bqv view apply --dir=./example --projectid=${GCP_PROJECT_ID} --debug
+
+workflows:
+  version: 2
+  apply:
+    jobs:
+      - apply:
+          context: gcp
+          filters:
+              branches:
+                only: master
