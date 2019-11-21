@@ -8,18 +8,18 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "Setting env"
-        command: |
-          echo "export GOOGLE_APPLICATION_CREDENTIALS=/key.json" >> $BASH_ENV
-          echo $GCP_KEY > $GOOGLE_APPLICATION_CREDENTIALS
+          name: "Setting env"
+          command: |
+            echo "export GOOGLE_APPLICATION_CREDENTIALS=/key.json" >> $BASH_ENV
+            echo $GCP_KEY > $GOOGLE_APPLICATION_CREDENTIALS
       - run:
-        name: "Prepare bqv"
-        command: |
-          go get github.com/rerost/bqv
+          name: "Prepare bqv"
+          command: |
+            go get github.com/rerost/bqv
       - run:
-        name: "Apply"
-        command: |
-          ls example | xargs -IX bqv view apply --dir=./example/X --projectid=$GCP_PROJECT_ID --debug
+          name: "Apply"
+          command: |
+            ls example | xargs -IX bqv view apply --dir=./example/X --projectid=$GCP_PROJECT_ID --debug
 
 workflows:
   version: 2
