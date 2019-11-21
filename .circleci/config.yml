@@ -19,7 +19,7 @@ jobs:
       - run:
           name: "Apply"
           command: |
-            ls example | xargs -IX bqv view apply --dir=./example/X --projectid=${GCP_PROJECT_ID} --debug
+            bqv view apply --dir=./example --projectid=${GCP_PROJECT_ID} --debug
 
 workflows:
   version: 2
