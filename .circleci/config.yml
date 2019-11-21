@@ -14,7 +14,7 @@ apply:
           echo $GCP_KEY > $GOOGLE_APPLICATION_CREDENTIALS
       - run:
         name: "Prepare bqv"
-        command |
+        command: |
           go get github.com/rerost/bqv
       - run:
         name: "Apply"
