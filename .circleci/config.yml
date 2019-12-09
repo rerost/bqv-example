@@ -15,11 +15,11 @@ jobs:
       - run:
           name: "Prepare bqv"
           command: |
-            go get github.com/rerost/bqv@v0.1.6
+            GO111MODULE=on go get github.com/rerost/bqv@v0.1.6
       - run:
           name: "Apply"
           command: |
-            bqv view apply --dir=./example --projectid=${GCP_PROJECT_ID} --debug
+            GO111MODULE=on bqv view apply --dir=./example --projectid=${GCP_PROJECT_ID} --debug
 
 workflows:
   version: 2
