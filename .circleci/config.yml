@@ -2,7 +2,7 @@ version: 2
 jobs:
   apply:
     docker:
-      - image: circleci/golang:1.13
+      - image: circleci/golang:1.14
 
     working_directory: /go/src/github.com/rerost/bqv-example
     steps:
@@ -15,7 +15,7 @@ jobs:
       - run:
           name: "Prepare bqv"
           command: |
-            GO111MODULE=on go get github.com/rerost/bqv@v0.1.6
+            GO111MODULE=on go get github.com/rerost/bqv@master
       - run:
           name: "Apply"
           command: |
