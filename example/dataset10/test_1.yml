@@ -1,5 +1,5 @@
 metadata:
-  description: "test query"
-  label:
+  description: test query
+  labels:
     test: true
     created_by: bqv 
