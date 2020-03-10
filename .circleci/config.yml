@@ -15,7 +15,7 @@ jobs:
       - run:
           name: "Prepare bqv"
           command: |
-            GO111MODULE=on go get github.com/rerost/bqv@v0.1.7
+            GO111MODULE=on go get github.com/rerost/bqv@v0.1.8
       - run:
           name: "Apply"
           command: |
