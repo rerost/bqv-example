@@ -21,7 +21,9 @@ jobs:
           command: |
             GO111MODULE=on bqv view apply --dir=./example --projectid=${GCP_PROJECT_ID} --debug
       - run:
-          name: ""
+          name: "Apply UDF"
+          command: |
+            GO111MODULE=on bqv alpha query exec $(find udf -name \*.sql) --projectid=${GCP_PROJECT_ID} --debug
 
 workflows:
   version: 2
