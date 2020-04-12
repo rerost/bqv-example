@@ -20,6 +20,8 @@ jobs:
           name: "Apply"
           command: |
             GO111MODULE=on bqv view apply --dir=./example --projectid=${GCP_PROJECT_ID} --debug
+      - run:
+          name: ""
 
 workflows:
   version: 2
