@@ -24,7 +24,6 @@ jobs:
   apply:
     docker:
       - image: circleci/golang:1.17
-
     working_directory: /go/src/github.com/rerost/bqv-example
     steps:
       - checkout
@@ -59,4 +58,6 @@ workflows:
           filters:
               branches:
                 only: master
+  test:
+    jobs:
       - test
