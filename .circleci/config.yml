@@ -2,8 +2,7 @@ version: 2
 jobs:
   test: 
     docker:
-      - image: cimg/go:1.17.3
-    working_directory: /go/src/github.com/rerost/bqv-example
+      - image: circleci/golang:1.16
     steps:
       - checkout
       - run:
@@ -23,8 +22,7 @@ jobs:
 
   apply:
     docker:
-      - image: cimg/go:1.17.3
-    working_directory: /go/src/github.com/rerost/bqv-example
+      - image: circleci/golang:1.16
     steps:
       - checkout
       - run:
