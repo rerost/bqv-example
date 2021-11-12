@@ -1,8 +1,29 @@
 version: 2
 jobs:
+  test: 
+    docker:
+      - image: circleci/golang:1.17
+    working_directory: /go/src/github.com/rerost/bqv-example
+    steps:
+      - checkout
+      - run:
+          name: "Setting env"
+          command: |
+            echo "export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/key.json" >> $BASH_ENV
+            echo $GCP_KEY > ${HOME}/key.json
+      - run:
+          name: "Prepare bqv"
+          command: |
+            go install github.com/rerost/bqv@v0.3.0
+      - run:
+          name: "test"
+          command: |
+            bqv alpha test --dir=./example --projectid=${GCP_PROJECT_ID} --debug
+            bqv alpha test example/dataset1/example_view1.sql tests/dataset1/example_view1.sql --projectid=${GCP_PROJECT_NAME} --debug
+
   apply:
     docker:
-      - image: circleci/golang:1.16
+      - image: circleci/golang:1.17
 
     working_directory: /go/src/github.com/rerost/bqv-example
     steps:
@@ -38,3 +59,4 @@ workflows:
           filters:
               branches:
                 only: master
+      - test
