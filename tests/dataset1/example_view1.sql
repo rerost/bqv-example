@@ -1,0 +1,9 @@
+ASSERT (
+  SELECT COUNT(*) = 6
+  FROM BQV_TESTING_TABLE
+) AS 'check length'
+
+ASSERT (
+  SELECT SUM(id) = 21
+  FROM BQV_TESTING_TABLE
+) AS 'check sum'
