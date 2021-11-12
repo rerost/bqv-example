@@ -17,7 +17,7 @@ jobs:
       - run:
           name: "test"
           command: |
-            bqv alpha test example/dataset1/example_view1.sql tests/dataset1/example_view1.sql --projectid=${GCP_PROJECT_NAME} --debug
+            bqv alpha test example/dataset1/example_view1.sql tests/dataset1/example_view1.sql --projectid=${GCP_PROJECT_ID} --debug
 
   apply:
     docker:
@@ -41,11 +41,6 @@ jobs:
           name: "Apply UDF"
           command: |
             bqv alpha query exec $(find udf -name \*.sql) --projectid=${GCP_PROJECT_ID} --debug
-      - run:
-          name: "test"
-          command: |
-            bqv alpha test --dir=./example --projectid=${GCP_PROJECT_ID} --debug
-            bqv alpha test example/dataset1/example_view1.sql tests/dataset1/example_view1.sql --projectid=${GCP_PROJECT_NAME} --debug
 workflows:
   version: 2
   apply:
