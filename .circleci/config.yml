@@ -17,7 +17,6 @@ jobs:
       - run:
           name: "test"
           command: |
-            bqv alpha test --dir=./example --projectid=${GCP_PROJECT_ID} --debug
             bqv alpha test example/dataset1/example_view1.sql tests/dataset1/example_view1.sql --projectid=${GCP_PROJECT_NAME} --debug
 
   apply:
