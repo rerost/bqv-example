@@ -2,7 +2,7 @@ version: 2
 jobs:
   apply:
     docker:
-      - image: circleci/golang:1.17
+      - image: circleci/golang:1.16
 
     working_directory: /go/src/github.com/rerost/bqv-example
     steps:
@@ -29,7 +29,6 @@ jobs:
           command: |
             bqv alpha test --dir=./example --projectid=${GCP_PROJECT_ID} --debug
             bqv alpha test example/dataset1/example_view1.sql tests/dataset1/example_view1.sql --projectid=${GCP_PROJECT_NAME} --debug
-
 workflows:
   version: 2
   apply:
